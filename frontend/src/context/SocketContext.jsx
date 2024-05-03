@@ -19,7 +19,7 @@ export const SocketContextProvider = ({ children }) => {
 
             // create a new socket connection
             // pass the userId as a query parameter
-            const socket = io("http://localhost:5000", {
+            const socket = io("https://chat-app-4pi2.onrender.com", {
                 query:{
                     userId: authUser._id
                 }
