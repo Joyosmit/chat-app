@@ -1,5 +1,6 @@
 import Conversation from "../models/conversation.model.js";
 import Message from "../models/message.model.js";
+import { getReceiverSocketId, io } from "../socket/socket.js";
 
 export const sendMessage = async (req, res) => {
     try {
@@ -51,6 +52,12 @@ export const sendMessage = async (req, res) => {
         // This allows us to save both the conversation and the message in parallel
         await Promise.all([conversation.save(), newMessage.save()])
 
+
+        const receiverSocketId = getReceiverSocketId(receiverId);
+        if(receiverSocketId){
+            // Emitting the message to the receiver only
+            io.to(receiverSocketId).emit("newMessage", newMessage)
+        }
 
         res.status(201).json(newMessage)
 

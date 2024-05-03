@@ -47,7 +47,7 @@ export const signup = async (req, res) => {
         }
     } catch (error) {
         console.log("Error nigga", error.message)
-        res.status(500).json({ message: "Something went wrong...Chud gya guru" });
+        res.status(500).json({ error: "Something went wrong...Chud gya guru" });
     }
 };
 
@@ -74,7 +74,7 @@ export const login = async (req, res) => {
         });
     } catch (error) {
         console.log("Error in login controller", error.message)
-        res.status(500).json({ message: "Something went wrong...Chud gya guru" });
+        res.status(500).json({ error: "Something went wrong...Chud gya guru" });
     }
 };
 
@@ -90,7 +90,7 @@ export const logout = async (req, res) => {
         res.status(200).json({ message: "Logged out successfully" });
     } catch (error) {
         console.log("Error in login controller", error.message)
-        res.status(500).json({ message: "Something went wrong...Chud gya guru" });
+        res.status(500).json({ error: "Something went wrong...Chud gya guru" });
 
     }
 };  // Logout the user
